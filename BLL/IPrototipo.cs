@@ -8,7 +8,6 @@ namespace BLL
 {
     public interface IPrototipo : ICloneable
     {
-        object ClonSuperficial(object ObjProto);
         object ClonProfundo(object ObjProto);
     }
 }

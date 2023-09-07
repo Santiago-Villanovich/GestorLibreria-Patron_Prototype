@@ -13,9 +13,17 @@ namespace BLL
         public int cantHojas { get; set; }
         public Editorial editorial { get; set; }
 
+        public Libro() { }
+        public Libro(string titulo, int cantHojas, Editorial editorial)
+        {
+            this.titulo = titulo;
+            this.cantHojas = cantHojas;
+            this.editorial = editorial;
+        }
+
         public object Clone()
         {
-            throw new NotImplementedException();
+            return (Libro)this.MemberwiseClone();
         }
 
         public object ClonProfundo(object ObjProto)
@@ -26,9 +34,9 @@ namespace BLL
             return clone;
         }
 
-        public object ClonSuperficial(object ObjProto)
+        public override string ToString()
         {
-            return (Libro)this.MemberwiseClone();
+            return $"Titulo:{this.titulo} - Cantidad de paginas:{this.cantHojas} - Datos Editorial: {this.editorial.nombre},{this.editorial.direccion}";
         }
     }
 }

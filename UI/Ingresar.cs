@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class Form1 : Form
+    public partial class Ingresar : Form
     {
-        public Form1()
+        public Ingresar()
         {
             InitializeComponent();
         }

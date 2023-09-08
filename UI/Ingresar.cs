@@ -16,5 +16,10 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void Ingresar_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -42,10 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DALautor.cs" />
     <Compile Include="DAL_Editorial.cs" />
     <Compile Include="DAL_Libro.cs" />
     <Compile Include="DAL_usuario.cs" />
-    <Compile Include="Datos.cs" />
+    <Compile Include="Acceso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,10 +13,10 @@ namespace DAL
         public DAL_usuario()
         {
             oBLLusuario = new BLLUsuario();
-            Odatos = new Datos();
+            Odatos = new Acceso();
         }
         BLLUsuario oBLLusuario;
-        Datos Odatos;
+        Acceso Odatos;
 
         public bool Guardar_Usuario(BLLUsuario Usuario)
         {

@@ -12,9 +12,9 @@ namespace DAL
     {
         public DAL_Editorial()
         {
-            Odatos = new Datos();
+            Odatos = new Acceso();
         }
-        Datos Odatos;
+        Acceso Odatos;
 
         public bool Crear_Editorial(Editorial oEditorial)
         {
@@ -26,5 +26,13 @@ namespace DAL
             Hdatos.Add("@direccion",oEditorial.direccion);
             return Odatos.Escribir(consulta, Hdatos);
         }
-    }
+
+        public bool Eliminar_Editorial(int ID)
+        {
+            string consulta = "S_Crear_Editorial";
+            Hashtable Hdatos = new Hashtable();
+            Hdatos.Add("@codigo", ID);
+            return Odatos.Escribir(consulta, Hdatos);
+        }
+}
 }

@@ -8,7 +8,7 @@ using System.Collections;
 using System.Data.SqlClient;
 namespace DAL
 {
-   public class Datos
+   public class Acceso
     {
         public SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-0Q8ML9D\SQLEXPRESS;Initial Catalog=PractLUG;Integrated Security=True");
 

@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="autor.cs" />
     <Compile Include="BLLUsuario.cs" />
     <Compile Include="Editorial.cs" />
     <Compile Include="Libro.cs" />

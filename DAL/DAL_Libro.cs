@@ -12,9 +12,9 @@ namespace DAL
     {
         public DAL_Libro()
         {
-            oDatos = new Datos();
+            oDatos = new Acceso();
         }
-        Datos oDatos;
+        Acceso oDatos;
 
         public bool Guardar_Libro(Libro Olibro)
         {
@@ -23,6 +23,13 @@ namespace DAL
             Hdatos.Add("@cantidad_hojas",Olibro.cantHojas);
             Hdatos.Add("@codigo_editorial",Olibro.editorial.cuil);
             Hdatos.Add("@titulo",Olibro.titulo);
+            return oDatos.Escribir(consulta, Hdatos);
+        }
+        public bool Eliminar_libro(int ID)
+        {
+            string consulta = "S_Eliminar_Libro";
+            Hashtable Hdatos = new Hashtable();
+            Hdatos.Add("@codigo", ID);
             return oDatos.Escribir(consulta, Hdatos);
         }
     }

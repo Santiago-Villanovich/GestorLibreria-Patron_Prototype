@@ -8,7 +8,7 @@ using System.Data;
 using System.Collections;
 namespace DAL
 {
-    internal class DAL_Editorial
+    public class DAL_Editorial
     {
         public DAL_Editorial()
         {
@@ -29,10 +29,29 @@ namespace DAL
 
         public bool Eliminar_Editorial(int ID)
         {
-            string consulta = "S_Crear_Editorial";
+            string consulta = "S_Eliminar_Editorial";
             Hashtable Hdatos = new Hashtable();
             Hdatos.Add("@codigo", ID);
             return Odatos.Escribir(consulta, Hdatos);
+        }
+
+        public List<Editorial> Traer_Editoriales()
+        {
+            string consulta = "S_Traer_Editoriales";
+            Hashtable Hdatos = new Hashtable();
+            DataTable DT = Odatos.Leer(consulta, null);
+            List<Editorial> Editoriales = new List<Editorial>();
+            foreach(DataRow fila in DT.Rows)
+            {
+                Editorial oEditorial= new Editorial();
+                oEditorial.id = Convert.ToInt32(fila["codigo_editorial"]);
+                oEditorial.cuil = Convert.ToInt32(fila["cuil"]);
+                oEditorial.direccion = fila["direccion"].ToString();
+                oEditorial.telefono = fila["telefono"].ToString();
+                oEditorial.nombre = fila["nombre"].ToString();
+                Editoriales.Add(oEditorial);
+            }
+            return Editoriales;
         }
 }
 }

@@ -10,7 +10,7 @@ namespace DAL
 {
    public class Acceso
     {
-        public SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-0Q8ML9D\SQLEXPRESS;Initial Catalog=PractLUG;Integrated Security=True");
+        public SqlConnection conexion = new SqlConnection(@"Data Source=DESKTOP-0Q8ML9D\SQLEXPRESS;Initial Catalog=Libreria;Integrated Security=True");
 
         private SqlTransaction tranx;
 

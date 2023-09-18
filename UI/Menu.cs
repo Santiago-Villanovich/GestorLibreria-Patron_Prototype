@@ -15,7 +15,7 @@ namespace UI
         public Menu()
         {
             InitializeComponent();
-            CargarMenuContenedor(new Inicio());
+            CargarMenuContenedor(new IngresarLibro());
         }
 
         private void CargarMenuContenedor(object formHijo)
@@ -30,6 +30,29 @@ namespace UI
             this.ContPanel.Controls.Add(frm);
             this.ContPanel.Tag = frm;
             frm.Show();
+        }
+       
+        private void ContPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Catalogo form = new Catalogo();
+            form.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            IngresarLibro form = new IngresarLibro();
+            form.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Editorial_Autor form = new Editorial_Autor();
+            form.Show();
         }
     }
 }

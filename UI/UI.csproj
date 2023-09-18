@@ -53,17 +53,23 @@
     <Compile Include="Catalogo.Designer.cs">
       <DependentUpon>Catalogo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Editorial-Autor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Editorial-Autor.Designer.cs">
+      <DependentUpon>Editorial-Autor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ingresar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Ingresar.Designer.cs">
       <DependentUpon>Ingresar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inicio.cs">
+    <Compile Include="IngresarLibro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inicio.Designer.cs">
-      <DependentUpon>Inicio.cs</DependentUpon>
+    <Compile Include="IngresarLibro.Designer.cs">
+      <DependentUpon>IngresarLibro.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -82,11 +88,14 @@
     <EmbeddedResource Include="Catalogo.resx">
       <DependentUpon>Catalogo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Editorial-Autor.resx">
+      <DependentUpon>Editorial-Autor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ingresar.resx">
       <DependentUpon>Ingresar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inicio.resx">
-      <DependentUpon>Inicio.cs</DependentUpon>
+    <EmbeddedResource Include="IngresarLibro.resx">
+      <DependentUpon>IngresarLibro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -116,6 +125,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{edd4e0ac-74ac-4f0d-bc7a-fa0430e73c88}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{e00ef4b1-caaa-4ad2-920c-772d0080e353}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servicio\Servicio.csproj">
+      <Project>{a950beaa-389e-4632-858d-70dc62fc5e47}</Project>
+      <Name>Servicio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,7 +23,7 @@ namespace DAL
             Hdatos.Add("@nombre",oAutor.nombre);
             Hdatos.Add("@apellido",oAutor.apellido);
             Hdatos.Add("@nacionalidad",oAutor.nacionalidad);
-            Hdatos.Add("@fecha_nacimiento",oAutor.Fecha_Nacimiento);
+            Hdatos.Add("@fechaNacimiento",oAutor.Fecha_Nacimiento);
             return oDatos.Escribir(consulta, Hdatos);
 
         }
@@ -32,7 +32,26 @@ namespace DAL
         {
             string consulta = "S_Eliminar_Autor";
             Hashtable Hdatos = new Hashtable();
-            Hdatos.Add("@codigo", oAutor.nombre);
+            Hdatos.Add("@id", oAutor.codigo);
             return oDatos.Escribir(consulta, Hdatos);
         }
+
+        public List<autor> Traer_Autores()
+        {
+            string consulta = "S_Traer_Autores";
+            DataTable DT = oDatos.Leer(consulta, null);
+            List<autor> Autores = new List<autor>();
+            foreach(DataRow fila in DT.Rows)
+            {
+                autor oAutor = new autor();
+                oAutor.codigo = Convert.ToInt32(fila["id"]);
+                oAutor.nombre = fila["nombre"].ToString();
+                oAutor.apellido = fila["apellido"].ToString();
+                oAutor.nacionalidad = fila["nacionalidad"].ToString();
+                oAutor.Fecha_Nacimiento = Convert.ToDateTime(fila["fecha_nacimiento"]);
+                Autores.Add(oAutor);
+            }
+            return Autores;
+        }
+}
 }

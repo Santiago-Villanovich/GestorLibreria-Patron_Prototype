@@ -9,9 +9,11 @@ namespace BLL
 {
     public class Libro:IPrototipo
     {
+        public int id { get; set; }
         public string titulo { get; set; }
         public int cantHojas { get; set; }
         public Editorial editorial { get; set; }
+        public List<autor> autores { get; set; }
 
         public Libro() { }
         public Libro(string titulo, int cantHojas, Editorial editorial)
@@ -29,7 +31,7 @@ namespace BLL
         public object ClonProfundo(object ObjProto)
         {
             Libro clone = (Libro)this.MemberwiseClone();
-            clone.editorial = new Editorial(editorial.cuil);
+            clone.editorial = new Editorial(editorial.nombre,editorial.cuil,editorial.telefono,editorial.direccion);
             clone.titulo = String.Copy(titulo);
             return clone;
         }

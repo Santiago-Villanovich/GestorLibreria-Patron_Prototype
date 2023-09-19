@@ -48,7 +48,7 @@ namespace UI
                     Menu form = new Menu();
                     form.Show();
                     SessionManager.Login(Ousuario);
-                   
+                    this.Hide();
                 }
                 else
                 {
@@ -58,6 +58,28 @@ namespace UI
                 }
             }
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (panel1.Visible == false)
+            {
+                panel1.Visible = true;
+            }
+            else
+            {
+                BLLUsuario oUsuario = new BLLUsuario();
+                oUsuario.username = textBox3.Text;
+                oUsuario.contraseña = textBox4.Text;
+                oUsuario.DNI = Convert.ToInt32(textBox5.Text);
+                Dusuario.Guardar_Usuario(oUsuario);
+                MessageBox.Show("Se guardo el usuario correctamente");
+                SessionManager u = SessionManager.GetInstance;
+                Menu form = new Menu();
+                form.Show();
+                SessionManager.Login(oUsuario);
+                this.Hide();
+            }
         }
     }
 }

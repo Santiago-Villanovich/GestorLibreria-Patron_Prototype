@@ -15,6 +15,7 @@ namespace BLL
         public Editorial editorial { get; set; }
         public List<autor> autores { get; set; }
 
+        public int N_copia { get; set; }
         public Libro() { }
         public Libro(string titulo, int cantHojas, Editorial editorial)
         {

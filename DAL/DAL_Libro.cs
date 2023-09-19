@@ -53,12 +53,7 @@ namespace DAL
                 oLibro.titulo = fila["titulo"].ToString();
                 oLibro.cantHojas= Convert.ToInt32(fila["cantidad_hojas"]);
 ////////////////////////////////////////////////////////////////////////////////////corregir esta parte,colgue que era uno a muchos,mala mia
-                autor oAutor = new autor();
-                oAutor.codigo= Convert.ToInt32(fila["id"]);
-                oAutor.nombre = fila["nombre"].ToString();
-                oAutor.apellido = fila["apellido"].ToString();
-                oAutor.nacionalidad = fila["nacionalidad"].ToString();
-                oAutor.Fecha_Nacimiento = Convert.ToDateTime(fila["fecha_nacimiento"]);
+               
 
                 Editorial oEditorial = new Editorial();
                 oEditorial.id= Convert.ToInt32(fila["codigo_editorial"]);
@@ -67,10 +62,33 @@ namespace DAL
            //     oEditorial.telefono= fila["telefono"].ToString();
 
                 oLibro.editorial = oEditorial;
-                oLibro.autores.Add(oAutor);
+                oLibro.autores = Traer_Autores(oLibro.id);
                 Libros.Add(oLibro);
             }
             return Libros;
+        }
+
+
+
+        public List<autor> Traer_Autores(int ID)
+        {
+            string consulta = "S_Traer_Autores_Libro";
+
+            Hashtable Hdatos = new Hashtable();
+            Hdatos.Add("@codigoLibro", ID);
+            DataTable DT = oDatos.Leer(consulta, Hdatos);
+            List<autor> Autores = new List<autor>();
+            foreach(DataRow fila in DT.Rows)
+            {
+                autor oAutor = new autor();
+                oAutor.codigo = Convert.ToInt32(fila["id"]);
+                oAutor.nombre = fila["nombre"].ToString();
+                oAutor.apellido = fila["apellido"].ToString();
+                oAutor.nacionalidad = fila["nacionalidad"].ToString();
+                oAutor.Fecha_Nacimiento = Convert.ToDateTime(fila["fecha_nacimiento"]);
+                Autores.Add(oAutor);
+            }
+            return Autores;
         }
     }
 }

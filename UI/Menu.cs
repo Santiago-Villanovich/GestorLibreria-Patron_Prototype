@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Servicio;
+using BLL;
 
 namespace UI
 {
@@ -15,7 +17,7 @@ namespace UI
         public Menu()
         {
             InitializeComponent();
-            CargarMenuContenedor(new IngresarLibro());
+           // CargarMenuContenedor(new IngresarLibro());
         }
 
         private void CargarMenuContenedor(object formHijo)
@@ -40,19 +42,28 @@ namespace UI
         private void button1_Click(object sender, EventArgs e)
         {
             Catalogo form = new Catalogo();
-            form.Show();
+            CargarMenuContenedor(form);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             IngresarLibro form = new IngresarLibro();
-            form.Show();
+            CargarMenuContenedor(form);
+            // form.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             Editorial_Autor form = new Editorial_Autor();
+            CargarMenuContenedor(form);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            SessionManager.Logout();
+            Ingresar form = new Ingresar();
             form.Show();
+            this.Hide();
         }
     }
 }

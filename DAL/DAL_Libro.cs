@@ -68,7 +68,33 @@ namespace DAL
             return Libros;
         }
 
+        public List<Libro> Traer_Libros_Filtered(string titulo = null, string genero = null, string editorial = null)
+        {
+            string consulta = "S_Traer_Libros";
+            DataTable DT = oDatos.Leer(consulta, null);
+            List<Libro> Libros = new List<Libro>();
+            foreach (DataRow fila in DT.Rows)
+            {
+                Libro oLibro = new Libro()
+                {
+                    id = Convert.ToInt32(fila["codigoLibro"]),
+                    titulo = fila["titulo"].ToString(),
+                    cantHojas = Convert.ToInt32(fila["cantidad_hojas"]),
 
+                    editorial = new Editorial()
+                    {
+                        id = Convert.ToInt32(fila["codigo_editorial"]),
+                        cuil = Convert.ToInt32(fila["cuil"]),
+                        direccion = fila["direccion"].ToString()
+                    },
+
+                };
+
+                oLibro.autores = Traer_Autores(oLibro.id);
+                Libros.Add(oLibro);
+            }
+            return Libros;
+        }
 
         public List<autor> Traer_Autores(int ID)
         {

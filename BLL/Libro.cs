@@ -12,16 +12,24 @@ namespace BLL
         public int id { get; set; }
         public string titulo { get; set; }
         public int cantHojas { get; set; }
+        public string genero { get; set; }
+        public int anioPubli { get; set; }
+        public double precio { get; set; }
         public Editorial editorial { get; set; }
         public List<autor> autores { get; set; }
 
-        public int N_copia { get; set; }
+
         public Libro() { }
-        public Libro(string titulo, int cantHojas, Editorial editorial)
+        public Libro(string titulo,string genero,int anioPubli, double precio, int cantHojas, Editorial editorial, List<autor> autores)
         {
             this.titulo = titulo;
             this.cantHojas = cantHojas;
+            this.genero = genero;
+            this.anioPubli = anioPubli;
+            this.precio = precio;
+
             this.editorial = editorial;
+            this.autores = autores;
         }
 
         public object Clone()

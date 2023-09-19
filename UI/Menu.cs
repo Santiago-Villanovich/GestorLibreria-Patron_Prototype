@@ -17,7 +17,6 @@ namespace UI
         public Menu()
         {
             InitializeComponent();
-           // CargarMenuContenedor(new IngresarLibro());
         }
 
         private void CargarMenuContenedor(object formHijo)
@@ -41,21 +40,17 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Catalogo form = new Catalogo();
-            CargarMenuContenedor(form);
+            CargarMenuContenedor(new Catalogo());
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            IngresarLibro form = new IngresarLibro();
-            CargarMenuContenedor(form);
-            // form.Show();
+            CargarMenuContenedor(new IngresarLibro());
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Editorial_Autor form = new Editorial_Autor();
-            CargarMenuContenedor(form);
+            CargarMenuContenedor(new Editorial_Autor());
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -64,6 +59,11 @@ namespace UI
             Ingresar form = new Ingresar();
             form.Show();
             this.Hide();
+        }
+
+        private void btnAgregarStock_Click(object sender, EventArgs e)
+        {
+            CargarMenuContenedor(new AgregarStock());
         }
     }
 }

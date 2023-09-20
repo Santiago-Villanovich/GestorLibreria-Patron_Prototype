@@ -68,10 +68,18 @@ namespace DAL
             return Libros;
         }
 
-        public List<Libro> Traer_Libros_Filtered(string titulo = null, string genero = null, string editorial = null)
+        public List<Libro> Traer_Libros_Filtered(string titulo, string genero, string NombreEditorial)
         {
-            string consulta = "S_Traer_Libros";
-            DataTable DT = oDatos.Leer(consulta, null);
+            string consulta = "S_Traer_Libros_Filtro";
+           // DataTable DT = oDatos.Leer(consulta, null);
+            Hashtable Hdatos = new Hashtable();
+           // Hdatos.Add("@titulo", titulo ?? (object)DBNull.Value);
+                Hdatos.Add("@titulo", titulo == null ? (object)DBNull.Value : titulo);
+           // Hdatos.Add("@genero", genero ?? (object)DBNull.Value);
+           // Hdatos.Add("@NombreEditorial", NombreEditorial ?? (object)DBNull.Value);
+               Hdatos.Add("@genero", genero == null ? (object)DBNull.Value : genero);
+             Hdatos.Add("@NombreEditorial", NombreEditorial == null ? (object)DBNull.Value : NombreEditorial);
+            DataTable DT = oDatos.Leer(consulta,Hdatos);
             List<Libro> Libros = new List<Libro>();
             foreach (DataRow fila in DT.Rows)
             {

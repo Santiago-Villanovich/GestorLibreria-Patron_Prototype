@@ -30,11 +30,11 @@ namespace UI
 
             if (error == 0)
             {
-                autor autorSelect = (autor)dataGridView2.CurrentRow.DataBoundItem;
-                Editorial editorialSelect = (Editorial)dataGridView1.CurrentRow.DataBoundItem;
+               /* autor autorSelect = (autor)dataGridView2.CurrentRow.DataBoundItem;
+                Editorial editorialSelect = (Editorial)dataGridView1.CurrentRow.DataBoundItem;*/
 
                 Libro olibro = new Libro();
-                olibro.editorial = editorialSelect;
+            //    olibro.editorial = editorialSelect;
                 olibro.titulo = textBox1.Text;
                 olibro.cantHojas = Convert.ToInt32(textBox2.Text);
                 Dlibro.Guardar_Libro(olibro);
@@ -45,7 +45,7 @@ namespace UI
 
         void cargarDatos()
         {
-            List<BLL.Editorial> Editoriales = Deditorial.Traer_Editoriales();
+         /*   List<BLL.Editorial> Editoriales = Deditorial.Traer_Editoriales();
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = Editoriales;
             List<autor> autores = Dautor.Traer_Autores();
@@ -53,7 +53,7 @@ namespace UI
             dataGridView2.DataSource = autores;
             List<Libro> Libros = Dlibro.Traer_Libros();
             dataGridView3.DataSource = null;
-            dataGridView3.DataSource = Libros;
+            dataGridView3.DataSource = Libros;*/
         }
 
         private void IngresarLibro_Load(object sender, EventArgs e)
@@ -63,10 +63,10 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Libro libroSelect = (Libro)dataGridView3.CurrentRow.DataBoundItem;
+          /*  Libro libroSelect = (Libro)dataGridView3.CurrentRow.DataBoundItem;
             autor autorSelect = (autor)dataGridView2.CurrentRow.DataBoundItem;
             Dlibro.Agregar_Autor_al_libro(libroSelect.id, autorSelect.codigo);
-            MessageBox.Show("Se asigno correctamente");
+            MessageBox.Show("Se asigno correctamente");*/
         }
     }
 }

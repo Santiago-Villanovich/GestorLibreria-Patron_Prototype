@@ -12,26 +12,26 @@ namespace BLL
         public int id { get; set; }
         public string titulo { get; set; }
         public int cantHojas { get; set; }
-        public string genero { get; set; }
-        public int anioPubli { get; set; }
+        public Genero genero { get; set; }
+        public DateTime anioPubli { get; set; }
         public double precio { get; set; }
         public Editorial editorial { get; set; }
-        public List<autor> autores { get; set; }
+        public autor Autor { get; set; }
 
 
         public Libro() { }
-        public Libro(string titulo,string genero,int anioPubli, double precio, int cantHojas, Editorial editorial, List<autor> autores)
+        public Libro(string titulo,Genero _genero,DateTime anioPubli, double precio, int cantHojas, Editorial editorial, autor _autor)
         {
             this.titulo = titulo;
             this.cantHojas = cantHojas;
-            this.genero = genero;
+            this.genero = _genero;
             this.anioPubli = anioPubli;
             this.precio = precio;
-
             this.editorial = editorial;
-            this.autores = autores;
+            this.Autor = _autor;
         }
 
+        
         public object Clone()
         {
             return (Libro)this.MemberwiseClone();
@@ -49,5 +49,10 @@ namespace BLL
         {
             return $"Titulo:{this.titulo} - Cantidad de paginas:{this.cantHojas} - Datos Editorial: {this.editorial.nombre},{this.editorial.direccion}";
         }
+    }
+    public class Genero
+    {
+        public int id { get; set; }
+        public string descripcion { get; set; }
     }
 }

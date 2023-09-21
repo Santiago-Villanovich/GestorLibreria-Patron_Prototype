@@ -64,7 +64,7 @@ namespace UI
         {
          
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = DALibro.Traer_Libros_Filtered(oLibroT.titulo,oLibroG.genero,editorial.nombre);
+            dataGridView1.DataSource = DALibro.Traer_Libros_Filtered(oLibroT.titulo,oLibroG.genero.descripcion,editorial.nombre);
         }
         private void Catalogo_Load(object sender, EventArgs e)
         {

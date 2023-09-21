@@ -125,7 +125,6 @@ namespace DAL
                     },
                 };
 
-                //oLibro.autores = Traer_Autores(oLibro.id);
                 Libros.Add(oLibro);
             }
             return Libros;

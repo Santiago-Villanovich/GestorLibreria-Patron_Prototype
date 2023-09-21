@@ -35,22 +35,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.cboxEditorial = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cboxGenero = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
-            this.ChkListAutores = new System.Windows.Forms.CheckedListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.cboxAutor = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             this.SuspendLayout();
@@ -113,7 +108,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(14, 603);
+            this.button1.Location = new System.Drawing.Point(124, 479);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(181, 48);
@@ -121,26 +116,6 @@
             this.button1.Text = "Crear Libro";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(45, 54);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 16);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Libros existentes";
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(30, 96);
-            this.dataGridView3.Margin = new System.Windows.Forms.Padding(4);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 51;
-            this.dataGridView3.Size = new System.Drawing.Size(401, 158);
-            this.dataGridView3.TabIndex = 11;
             // 
             // cboxEditorial
             // 
@@ -153,7 +128,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.groupBox1.Controls.Add(this.ChkListAutores);
+            this.groupBox1.Controls.Add(this.cboxAutor);
             this.groupBox1.Controls.Add(this.numericUpDown2);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.numericUpDown1);
@@ -171,7 +146,7 @@
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Location = new System.Drawing.Point(1, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(491, 705);
+            this.groupBox1.Size = new System.Drawing.Size(454, 571);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Nuevo ejemplar";
@@ -184,18 +159,6 @@
             this.label6.Size = new System.Drawing.Size(161, 16);
             this.label6.TabIndex = 16;
             this.label6.Text = "Datos del nuevo ejemplar";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.BackColor = System.Drawing.Color.Gainsboro;
-            this.groupBox2.Controls.Add(this.dataGridView3);
-            this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(732, 13);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(278, 569);
-            this.groupBox2.TabIndex = 17;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Nueva Edicion";
             // 
             // cboxGenero
             // 
@@ -249,31 +212,27 @@
             this.label10.TabIndex = 23;
             this.label10.Text = "Precio";
             // 
-            // ChkListAutores
+            // cboxAutor
             // 
-            this.ChkListAutores.FormattingEnabled = true;
-            this.ChkListAutores.Location = new System.Drawing.Point(252, 190);
-            this.ChkListAutores.Name = "ChkListAutores";
-            this.ChkListAutores.Size = new System.Drawing.Size(180, 225);
-            this.ChkListAutores.TabIndex = 25;
+            this.cboxAutor.FormattingEnabled = true;
+            this.cboxAutor.Location = new System.Drawing.Point(252, 190);
+            this.cboxAutor.Name = "cboxAutor";
+            this.cboxAutor.Size = new System.Drawing.Size(181, 24);
+            this.cboxAutor.TabIndex = 25;
             // 
             // IngresarLibro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 749);
-            this.Controls.Add(this.groupBox2);
+            this.ClientSize = new System.Drawing.Size(565, 640);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "IngresarLibro";
             this.Text = "Inicio";
             this.Load += new System.EventHandler(this.IngresarLibro_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
             this.ResumeLayout(false);
@@ -289,18 +248,15 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.ComboBox cboxEditorial;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboxGenero;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.CheckedListBox ChkListAutores;
+        private System.Windows.Forms.ComboBox cboxAutor;
     }
 }

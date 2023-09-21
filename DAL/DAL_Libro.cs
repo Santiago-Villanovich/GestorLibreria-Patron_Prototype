@@ -124,5 +124,27 @@ namespace DAL
             }
             return Autores;
         }
+
+        public List<Genero> Traer_Generos()
+        {
+            string consulta = "S_Traer_Autores_Libro";
+
+            Hashtable Hdatos = new Hashtable();
+            DataTable DT = oDatos.Leer(consulta, Hdatos);
+            List<Genero> generos= new List<Genero>();
+            foreach (DataRow fila in DT.Rows)
+            {
+                
+                //generos.Add(oAutor);
+            }
+            return generos;
+        }
+
+    }
+
+    public class Genero
+    {
+        public int id { get; set;}
+        public string descripcion { get; set; }
     }
 }

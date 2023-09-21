@@ -125,7 +125,8 @@ namespace UI
             oLibroG = null;
             oLibroT = null;
             editorial = null;
-            cargar_Libros();
+
+            Catalogo_Load(sender, e);
         }
     }
 }

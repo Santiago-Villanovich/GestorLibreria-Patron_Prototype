@@ -13,17 +13,34 @@ namespace UI
 {
     public partial class IngresarLibro : Form
     {
+        DAL_Libro Dlibro;
+        DALautor Dautor;
+        DAL_Editorial Deditorial;
+
+        void cargarDatos()
+        {
+            cboxGenero.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cboxGenero.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cboxGenero.DataSource = Dlibro.Traer_Generos();
+            cboxGenero.ValueMember = "id";
+            cboxGenero.DisplayMember = "descripcion";
+            cboxGenero.SelectedItem = null;
+
+
+        }
+
         public IngresarLibro()
         {
             InitializeComponent();
             Dlibro = new DAL_Libro();
             Deditorial = new DAL_Editorial();
             Dautor = new DALautor();
-            cargarDatos();
+            
         }
-        DAL_Libro Dlibro;
-        DALautor Dautor;
-        DAL_Editorial Deditorial;
+
+        
+
         private void button1_Click(object sender, EventArgs e)
         {
             int error=0;
@@ -42,23 +59,9 @@ namespace UI
                 cargarDatos();
             }
         }
-
-        void cargarDatos()
-        {
-         /*   List<BLL.Editorial> Editoriales = Deditorial.Traer_Editoriales();
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = Editoriales;
-            List<autor> autores = Dautor.Traer_Autores();
-            dataGridView2.DataSource = null;
-            dataGridView2.DataSource = autores;
-            List<Libro> Libros = Dlibro.Traer_Libros();
-            dataGridView3.DataSource = null;
-            dataGridView3.DataSource = Libros;*/
-        }
-
         private void IngresarLibro_Load(object sender, EventArgs e)
         {
-
+            cargarDatos();
         }
 
         private void button2_Click(object sender, EventArgs e)

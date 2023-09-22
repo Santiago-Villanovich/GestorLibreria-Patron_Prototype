@@ -25,7 +25,8 @@ namespace UI
             DALEditorial = new DAL_Editorial();
         }
         Libro oLibroT;
-        Libro oLibroG;
+        // Libro oLibroG;
+        Genero oGenero;
         BLL.Editorial editorial;
 
         private void CargarCBoxs()
@@ -44,9 +45,9 @@ namespace UI
             cboxGenero.AutoCompleteMode = AutoCompleteMode.Suggest;
             cboxGenero.AutoCompleteSource = AutoCompleteSource.ListItems;
 
-            cboxGenero.DataSource = list;
+            cboxGenero.DataSource = DALibro.Traer_Generos();
             cboxGenero.ValueMember = "id";
-            cboxGenero.DisplayMember = "genero";
+            cboxGenero.DisplayMember = "descripcion";
 
             cboxGenero.SelectedItem = null;
 
@@ -64,7 +65,7 @@ namespace UI
         {
          
             dataGridView1.DataSource = null;
-            dataGridView1.DataSource = DALibro.Traer_Libros_Filtered(oLibroT.titulo,oLibroG.genero.descripcion,editorial.nombre);
+            dataGridView1.DataSource = DALibro.Traer_Libros_Filtered(oLibroT.titulo,oGenero.descripcion,editorial.nombre);
         }
         private void Catalogo_Load(object sender, EventArgs e)
         {
@@ -106,7 +107,7 @@ namespace UI
         {
             if (cboxGenero.SelectedItem != null)
             {
-                oLibroG = (Libro)cboxGenero.SelectedItem;
+                oGenero = (Genero)cboxGenero.SelectedItem;
             }
             
         }
@@ -122,7 +123,7 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            oLibroG = null;
+            oGenero = null;
             oLibroT = null;
             editorial = null;
 

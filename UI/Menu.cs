@@ -65,5 +65,11 @@ namespace UI
         {
             CargarMenuContenedor(new AgregarStock());
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+           
+            CargarMenuContenedor(new IngresarNuevaEdicion());
+        }
     }
 }

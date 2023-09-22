@@ -27,8 +27,28 @@ namespace UI
             cboxGenero.DisplayMember = "descripcion";
             cboxGenero.SelectedItem = null;
 
+            cboxAutor.DataSource = Dautor.Traer_Autores();
+            cboxAutor.ValueMember = "codigo";
+            cboxAutor.DisplayMember = "apellido";//+" "+"apellido";
+            cboxAutor.SelectedItem = null;
 
+            cboxEditorial.DataSource = Deditorial.Traer_Editoriales();
+            cboxEditorial.ValueMember = "id";
+            cboxEditorial.DisplayMember = "nombre";
+            cboxEditorial.SelectedItem = null;
         }
+
+        void LimpiarControles()
+        {
+            textBox1.Text = string.Empty;
+            textBox2.Text = string.Empty;
+            cboxAutor.SelectedItem = null;
+            cboxEditorial.SelectedItem = null;
+            cboxGenero.SelectedItem = null;
+            numericUpDown1.Value = 0;
+            numericUpDown2.Value = 0;
+        }
+        
 
         public IngresarLibro()
         {
@@ -54,8 +74,15 @@ namespace UI
             //    olibro.editorial = editorialSelect;
                 olibro.titulo = textBox1.Text;
                 olibro.cantHojas = Convert.ToInt32(textBox2.Text);
+                olibro.genero = (Genero)cboxGenero.SelectedItem;
+                olibro.Autor = (autor)cboxAutor.SelectedItem;
+                olibro.editorial = (Editorial)cboxEditorial.SelectedItem;
+                olibro.precio = Convert.ToInt32(numericUpDown2.Value);
+                olibro.anioPubli = dateTimePicker1.Value;
+                olibro.stock = Convert.ToInt32(numericUpDown1.Value);
                 Dlibro.Guardar_Libro(olibro);
                 MessageBox.Show("se creo el libro");
+                LimpiarControles();
                 cargarDatos();
             }
         }
@@ -66,10 +93,7 @@ namespace UI
 
         private void button2_Click(object sender, EventArgs e)
         {
-          /*  Libro libroSelect = (Libro)dataGridView3.CurrentRow.DataBoundItem;
-            autor autorSelect = (autor)dataGridView2.CurrentRow.DataBoundItem;
-            Dlibro.Agregar_Autor_al_libro(libroSelect.id, autorSelect.codigo);
-            MessageBox.Show("Se asigno correctamente");*/
+          
         }
     }
 }

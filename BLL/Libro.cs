@@ -18,9 +18,10 @@ namespace BLL
         public Editorial editorial { get; set; }
         public autor Autor { get; set; }
 
+        public int stock { get; set; }
 
         public Libro() { }
-        public Libro(string titulo,Genero _genero,DateTime anioPubli, double precio, int cantHojas, Editorial editorial, autor _autor)
+        public Libro(string titulo,Genero _genero,DateTime anioPubli, double precio, int cantHojas, Editorial editorial, autor _autor,int _stock)
         {
             this.titulo = titulo;
             this.cantHojas = cantHojas;
@@ -29,6 +30,7 @@ namespace BLL
             this.precio = precio;
             this.editorial = editorial;
             this.Autor = _autor;
+            this.stock = _stock;
         }
 
         

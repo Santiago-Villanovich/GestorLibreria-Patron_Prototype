@@ -38,6 +38,17 @@ namespace UI
             dataGridView2.DataSource = autores;
         }
 
+        void LimpiarControles()
+        {
+            textBox1.Text = string.Empty;
+            textBox2.Text = string.Empty;
+            textBox3.Text = string.Empty;
+            textBox4.Text = string.Empty;
+            textBox5.Text = string.Empty;
+            textBox6.Text = string.Empty;
+            textBox7.Text = string.Empty;
+            
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             int error = 0;
@@ -110,6 +121,11 @@ namespace UI
                 panel1.Visible = false;
                 panel2.Visible = true;
             }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

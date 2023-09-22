@@ -29,11 +29,13 @@ namespace DAL
             string consulta = "S_Crear_Libro";
             Hashtable Hdatos = new Hashtable();
             Hdatos.Add("@cantidad_hojas",Olibro.cantHojas);
-            Hdatos.Add("@codigo_editorial",Olibro.editorial.cuil);
+            Hdatos.Add("@codigo_editorial",Olibro.editorial.id);
             Hdatos.Add("@titulo",Olibro.titulo);
             Hdatos.Add("@idGenero",Olibro.genero.id);
             Hdatos.Add("@fechaPublicacion",Olibro.anioPubli);
             Hdatos.Add("@precio",Olibro.precio);
+            Hdatos.Add("@stock", Olibro.stock);
+            Hdatos.Add("@id_autor", Olibro.Autor.codigo);
             return oDatos.Escribir(consulta, Hdatos);
         }
         public bool Eliminar_libro(int ID)
@@ -57,6 +59,7 @@ namespace DAL
                 oLibro.cantHojas= Convert.ToInt32(fila["cantidad_hojas"]);
                 oLibro.anioPubli = Convert.ToDateTime(fila["fecha_publicacion"]);
                 oLibro.precio = Convert.ToInt32(fila["precio"]);
+                oLibro.stock = Convert.ToInt32(fila["stock"]);
                 ////////////////////////////////////////////////////////////////////////////////////corregir esta parte,colgue que era uno a muchos,mala mia
 
                 Genero oGenero = new Genero();
@@ -102,6 +105,11 @@ namespace DAL
                     id = Convert.ToInt32(fila["codigoLibro"]),
                     titulo = fila["titulo"].ToString(),
                     cantHojas = Convert.ToInt32(fila["cantidad_hojas"]),
+                    stock = Convert.ToInt32(fila["stock"]),
+                    anioPubli = Convert.ToDateTime(fila["fecha_publicacion"]),
+                    precio = Convert.ToInt32(fila["precio"]),
+                    
+                    
 
                     editorial = new Editorial()
                     {
@@ -153,7 +161,7 @@ namespace DAL
 
         public List<Genero> Traer_Generos()
         {
-            string consulta = "S_Traer_Autores_Libro";
+            string consulta = "S_Traer_Generos";
 
             Hashtable Hdatos = new Hashtable();
             DataTable DT = oDatos.Leer(consulta, Hdatos);

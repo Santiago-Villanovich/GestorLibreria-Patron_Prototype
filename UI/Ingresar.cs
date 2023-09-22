@@ -22,42 +22,51 @@ namespace UI
         DAL_usuario Dusuario;
         private void Ingresar_Load(object sender, EventArgs e)
         {
-
+            panel2.Visible = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int error = 0;
-            if (textBox1.Text == string.Empty)
+            if (panel2.Visible == false)
             {
-                error++;
+                panel2.Visible = true;
+                panel1.Visible = false;
             }
-            if (textBox2.Text == string.Empty)
+            else
             {
-                error++;
-            }
-            if (error == 0)
-            {
-                BLLUsuario Ousuario = new BLLUsuario();
-                string usuario = textBox1.Text;
-                string contraseña = textBox2.Text;
-               Ousuario=  Dusuario.verificar_usuario(usuario, contraseña);
-                if (Ousuario != null)
+                int error = 0;
+                if (textBox1.Text == string.Empty)
                 {
-                    SessionManager u = SessionManager.GetInstance;
-                    Menu form = new Menu();
-                    form.Show();
-                    SessionManager.Login(Ousuario);
-                    this.Hide();
+                    error++;
                 }
-                else
+                if (textBox2.Text == string.Empty)
                 {
-                    MessageBox.Show("Error al ingresar");
-                    textBox1.Text = "";
-                    textBox2.Text = "";
+                    error++;
                 }
+                if (error == 0)
+                {
+                    BLLUsuario Ousuario = new BLLUsuario();
+                    string usuario = textBox1.Text;
+                    string contraseña = textBox2.Text;
+                    Ousuario = Dusuario.verificar_usuario(usuario, contraseña);
+                    if (Ousuario != null)
+                    {
+                        SessionManager u = SessionManager.GetInstance;
+                        Menu form = new Menu();
+                        form.Show();
+                        SessionManager.Login(Ousuario);
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al ingresar");
+                        textBox1.Text = "";
+                        textBox2.Text = "";
+                    }
+                }
+
+
             }
-            
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -65,6 +74,7 @@ namespace UI
             if (panel1.Visible == false)
             {
                 panel1.Visible = true;
+                panel2.Visible = false;
             }
             else
             {

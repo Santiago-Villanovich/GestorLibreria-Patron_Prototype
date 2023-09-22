@@ -60,30 +60,30 @@ namespace DAL
                 oLibro.anioPubli = Convert.ToDateTime(fila["fecha_publicacion"]);
                 oLibro.precio = Convert.ToInt32(fila["precio"]);
                 oLibro.stock = Convert.ToInt32(fila["stock"]);
-                ////////////////////////////////////////////////////////////////////////////////////corregir esta parte,colgue que era uno a muchos,mala mia
 
                 Genero oGenero = new Genero();
                 oGenero.id = Convert.ToInt32(fila["id"]);
                 oGenero.descripcion = fila["descripcion"].ToString();
-                ////////////////////////////////////////////////////////////////////////////////////
 
                 Editorial oEditorial = new Editorial();
+                oEditorial.nombre = fila["nombreEdit"].ToString();
+                oEditorial.telefono = fila["telefono"].ToString();
                 oEditorial.id= Convert.ToInt32(fila["codigo_editorial"]);
                 oEditorial.cuil= Convert.ToInt32(fila["cuil"]);
                 oEditorial.direccion= fila["direccion"].ToString();
-                //     oEditorial.telefono= fila["telefono"].ToString();
 
                 autor oAutor = new autor();
                 oAutor.codigo = Convert.ToInt32(fila["Codigo_autor"]);
-                oAutor.nombre = fila["nombre"].ToString();
-                oAutor.apellido = fila["apellido"].ToString();
+                oAutor.nombre = fila["nombreAut"].ToString();
+                oAutor.apellido = fila["apellidoAut"].ToString();
                 oAutor.nacionalidad = fila["nacionalidad"].ToString();
                 oAutor.Fecha_Nacimiento = Convert.ToDateTime(fila["fecha_nacimiento"]);
+                oAutor.SetNombreCompleto();
 
                 oLibro.Autor = oAutor;
                 oLibro.genero = oGenero;
                 oLibro.editorial = oEditorial;
-               // oLibro.autores = Traer_Autores(oLibro.id);
+
                 Libros.Add(oLibro);
             }
             return Libros;
@@ -115,7 +115,8 @@ namespace DAL
                     {
                         id = Convert.ToInt32(fila["codigo_editorial"]),
                         cuil = Convert.ToInt32(fila["cuil"]),
-                        direccion = fila["direccion"].ToString()
+                        direccion = fila["direccion"].ToString(),
+                        nombre = fila["nombreEdit"].ToString()
                     },
 
                     genero = new Genero()
@@ -126,12 +127,13 @@ namespace DAL
                     Autor = new autor()
                     {
                         codigo = Convert.ToInt32(fila["id_autor"]),
-                        nombre = fila["nombre"].ToString(),
-                        apellido=fila["apellido"].ToString(),
+                        nombre = fila["nombreAut"].ToString(),
+                        apellido=fila["apellidoAut"].ToString(),
                         nacionalidad=fila["nacionalidad"].ToString(),
                         Fecha_Nacimiento=Convert.ToDateTime(fila["fecha_nacimiento"])
                     },
                 };
+                oLibro.Autor.SetNombreCompleto();
 
                 Libros.Add(oLibro);
             }
@@ -172,7 +174,6 @@ namespace DAL
                 oGenero.id = Convert.ToInt32(fila["id"]);
                 oGenero.descripcion = fila["descripcion"].ToString();
                 generos.Add(oGenero);
-                //generos.Add(oAutor);
             }
             return generos;
         }

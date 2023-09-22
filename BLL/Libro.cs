@@ -17,7 +17,6 @@ namespace BLL
         public double precio { get; set; }
         public Editorial editorial { get; set; }
         public autor Autor { get; set; }
-
         public int stock { get; set; }
 
         public Libro() { }

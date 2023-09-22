@@ -31,6 +31,9 @@ namespace UI
         {
             dataGridView1.DataSource = null;
             dataGridView1.DataSource = Dlibro.Traer_Libros();
+            dataGridView1.Columns["genero"].Visible = false;
+            dataGridView1.Columns["editorial"].Visible = false;
+            dataGridView1.Columns["Autor"].Visible = false;
 
             comboBox2.DataSource = Deditorial.Traer_Editoriales();
             comboBox2.ValueMember = "id";
@@ -105,6 +108,8 @@ namespace UI
                         LibroClonado.Autor = (autor)cboxAutor.SelectedItem;
                     }
 
+                    LibroClonado.titulo += " - New Edition";
+
                     Dlibro.Guardar_Libro(LibroClonado);
                     MessageBox.Show("se clono el libro");
 
@@ -142,6 +147,9 @@ namespace UI
                     {
                         LibroClonado.precio = Convert.ToInt32(numericUpDown4.Value);
                     }
+
+                    LibroClonado.titulo += " - Revision";
+
                     Dlibro.Guardar_Libro(LibroClonado);
 
                     MessageBox.Show("se clono el libro");
@@ -164,6 +172,10 @@ namespace UI
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             libroSelect = (Libro)dataGridView1.CurrentRow.DataBoundItem;
+
+            lblGenero.Text = libroSelect.genero.descripcion.ToString();
+            lblEditorial.Text = libroSelect.editorial.nombre.ToString();
+            lblAutor.Text = libroSelect.Autor.NombreCompleto.ToString();
         }
     }
 }

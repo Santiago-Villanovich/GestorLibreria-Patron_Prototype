@@ -19,19 +19,13 @@ namespace BLL
             
             this.cuil = _cuil;
             this.nombre = _nombre;
-          this.telefono = _telefono;
-          this.direccion = _direccion;
+            this.telefono = _telefono;
+            this.direccion = _direccion;
         }
 
         public Editorial()
         {
 
-        }
-
-        public Editorial(string _nombre, int _cuil)
-        {
-            this.cuil = _cuil;
-            this.nombre = _nombre;
         }
 
         

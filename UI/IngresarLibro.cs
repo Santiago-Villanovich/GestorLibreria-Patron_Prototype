@@ -29,7 +29,7 @@ namespace UI
 
             cboxAutor.DataSource = Dautor.Traer_Autores();
             cboxAutor.ValueMember = "codigo";
-            cboxAutor.DisplayMember = "apellido";//+" "+"apellido";
+            cboxAutor.DisplayMember = "NombreCompleto";
             cboxAutor.SelectedItem = null;
 
             cboxEditorial.DataSource = Deditorial.Traer_Editoriales();
@@ -63,15 +63,10 @@ namespace UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int error=0;
-
-            if (error == 0)
+            try
             {
-               /* autor autorSelect = (autor)dataGridView2.CurrentRow.DataBoundItem;
-                Editorial editorialSelect = (Editorial)dataGridView1.CurrentRow.DataBoundItem;*/
-
                 Libro olibro = new Libro();
-            //    olibro.editorial = editorialSelect;
+
                 olibro.titulo = textBox1.Text;
                 olibro.cantHojas = Convert.ToInt32(textBox2.Text);
                 olibro.genero = (Genero)cboxGenero.SelectedItem;
@@ -80,14 +75,22 @@ namespace UI
                 olibro.precio = Convert.ToInt32(numericUpDown2.Value);
                 olibro.anioPubli = dateTimePicker1.Value;
                 olibro.stock = Convert.ToInt32(numericUpDown1.Value);
+
                 Dlibro.Guardar_Libro(olibro);
-                MessageBox.Show("se creo el libro");
-                LimpiarControles();
-                cargarDatos();
+
+                MessageBox.Show("Libro registrado con exito");
+
+                IngresarLibro_Load(sender, e);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
             }
         }
         private void IngresarLibro_Load(object sender, EventArgs e)
         {
+            LimpiarControles();
             cargarDatos();
         }
 

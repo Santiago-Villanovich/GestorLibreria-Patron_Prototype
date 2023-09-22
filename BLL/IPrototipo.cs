@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public interface IPrototipo : ICloneable
+    public interface IPrototipo<T> : ICloneable
     {
-        object ClonProfundo(object ObjProto);
+        T ClonProfundo();
     }
 }

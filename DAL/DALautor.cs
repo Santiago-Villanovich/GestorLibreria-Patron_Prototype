@@ -49,6 +49,8 @@ namespace DAL
                 oAutor.apellido = fila["apellido"].ToString();
                 oAutor.nacionalidad = fila["nacionalidad"].ToString();
                 oAutor.Fecha_Nacimiento = Convert.ToDateTime(fila["fecha_nacimiento"]);
+                oAutor.SetNombreCompleto();
+
                 Autores.Add(oAutor);
             }
             return Autores;

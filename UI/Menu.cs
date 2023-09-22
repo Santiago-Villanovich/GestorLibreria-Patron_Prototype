@@ -58,7 +58,7 @@ namespace UI
             SessionManager.Logout();
             Ingresar form = new Ingresar();
             form.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void btnAgregarStock_Click(object sender, EventArgs e)
@@ -68,7 +68,6 @@ namespace UI
 
         private void button5_Click(object sender, EventArgs e)
         {
-           
             CargarMenuContenedor(new IngresarNuevaEdicion());
         }
     }

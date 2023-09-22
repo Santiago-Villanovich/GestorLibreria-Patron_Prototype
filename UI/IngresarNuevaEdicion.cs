@@ -23,8 +23,23 @@ namespace UI
         DAL_Libro Dlibro;
         DAL_Editorial Deditorial;
         DALautor Dautor;
+        public Libro libroSelect;
 
-        void LimpiarControles()
+        private void cargardatos()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = Dlibro.Traer_Libros();
+
+            comboBox2.DataSource = Deditorial.Traer_Editoriales();
+            comboBox2.ValueMember = "id";
+            comboBox2.DisplayMember = "nombre";
+
+            cboxAutor.DataSource = Dautor.Traer_Autores();
+            cboxAutor.ValueMember = "codigo";
+            cboxAutor.DisplayMember = "NombreCompleto";
+        }
+
+        private void LimpiarControles()
         {
             textBox1.Text = string.Empty;
             textBox3.Text = string.Empty;
@@ -34,12 +49,13 @@ namespace UI
             numericUpDown4.Value = 0;
             
         }
+
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (radioButton2.Checked == true)
             {
-                groupBox2.Visible = true;
-                groupBox1.Visible = false;
+                gboxRevision.Enabled = true;
+                gboxEdicion.Enabled = false;
             }
         }
 
@@ -47,99 +63,105 @@ namespace UI
         {
             if (radioButton1.Checked == true)
             {
-                groupBox1.Visible = true;
-                groupBox2.Visible = false;
+                gboxEdicion.Enabled = true;
+                gboxRevision.Enabled = false;
             }
         }
 
-        void cargardatos()
-        {
-            dataGridView1.DataSource = null;
-            dataGridView1.DataSource = Dlibro.Traer_Libros();
-
-            
-            comboBox2.DataSource = Deditorial.Traer_Editoriales();
-            comboBox2.ValueMember = "id";
-            comboBox2.DisplayMember = "nombre";
-
-
-            cboxAutor.DataSource = Dautor.Traer_Autores();
-            cboxAutor.ValueMember = "codigo";
-            cboxAutor.DisplayMember = "apellido";
-        }
         private void IngresarNuevaEdicion_Load(object sender, EventArgs e)
         {
+            LimpiarControles();
             cargardatos();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //REGISTRO UN LIBRO A PARTIR DE UNA CLONACION PROFUNDA
         {
-            BLL.Libro LibroSelect = (Libro)dataGridView1.CurrentRow.DataBoundItem;
-
-            if (LibroSelect != null)
+            try
             {
-                BLL.Libro LibroClonado = (BLL.Libro)LibroSelect.ClonProfundo(LibroSelect);
-                if (textBox1.Text != string.Empty)
+                if (libroSelect != null)
                 {
-                    LibroClonado.cantHojas = Convert.ToInt32(textBox1.Text);
-                }
-                if (numericUpDown1.Value != 0)
-                {
-                    LibroClonado.precio = Convert.ToInt32(numericUpDown1.Value);
-                }
-                if (dateTimePicker1.Value != null)
-                {
-                    LibroClonado.anioPubli = dateTimePicker1.Value;
-                }
-                if (comboBox2.SelectedItem != null)
-                {
-                    LibroClonado.editorial = (Editorial)comboBox2.SelectedItem;
-                }
-                if (cboxAutor.SelectedItem != null)
-                {
-                    LibroClonado.Autor = (autor)cboxAutor.SelectedItem;
-                }
+                    Libro LibroClonado = (Libro)libroSelect.ClonProfundo();
 
-                Dlibro.Guardar_Libro(LibroClonado);
-                Dautor.guardar_Autor(LibroClonado.Autor);
-                Deditorial.Crear_Editorial(LibroClonado.editorial);
-                MessageBox.Show("se clono el libro junto a su autor y editorial");
-                LimpiarControles();
-                cargardatos();
+                    if (textBox1.Text != string.Empty)
+                    {
+                        LibroClonado.cantHojas = Convert.ToInt32(textBox1.Text);
+                    }
+                    if (numericUpDown1.Value != 0)
+                    {
+                        LibroClonado.precio = Convert.ToInt32(numericUpDown1.Value);
+                    }
+                    if (dateTimePicker1.Value != null)
+                    {
+                        LibroClonado.anioPubli = dateTimePicker1.Value;
+                    }
+                    if (comboBox2.SelectedItem != null)
+                    {
+                        LibroClonado.editorial = (Editorial)comboBox2.SelectedItem;
+                    }
+                    if (cboxAutor.SelectedItem != null)
+                    {
+                        LibroClonado.Autor = (autor)cboxAutor.SelectedItem;
+                    }
+
+                    Dlibro.Guardar_Libro(LibroClonado);
+                    MessageBox.Show("se clono el libro");
+
+                    IngresarNuevaEdicion_Load(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("No selecciono un libro");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No selecciono un libro");
+                MessageBox.Show(ex.Message);
             }
+            
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) // REGISTRO REVISION DEL LIBRO MEDIANTE CLON SUPERFICIAL
         {
-            BLL.Libro LibroSelect = (Libro)dataGridView1.CurrentRow.DataBoundItem;
-            if (LibroSelect != null)
+            try
             {
-                BLL.Libro LibroClonado = (BLL.Libro)LibroSelect.Clone();
-                if (textBox3.Text != string.Empty)
+                if (libroSelect != null)
                 {
-                    LibroClonado.cantHojas = Convert.ToInt32(textBox3.Text);
+                    Libro LibroClonado = (Libro)libroSelect.Clone();
+
+                    if (textBox3.Text != string.Empty)
+                    {
+                        LibroClonado.cantHojas = Convert.ToInt32(textBox3.Text);
+                    }
+                    if (dateTimePicker2.Value != null)
+                    {
+                        LibroClonado.anioPubli = dateTimePicker2.Value;
+                    }
+                    if (numericUpDown4.Value != 0)
+                    {
+                        LibroClonado.precio = Convert.ToInt32(numericUpDown4.Value);
+                    }
+                    Dlibro.Guardar_Libro(LibroClonado);
+
+                    MessageBox.Show("se clono el libro");
+
+                    IngresarNuevaEdicion_Load(sender, e);
                 }
-                if (dateTimePicker2.Value != null)
+                else
                 {
-                    LibroClonado.anioPubli = dateTimePicker2.Value;
+                    MessageBox.Show("Debe seleccionar algun libro");
                 }
-                if (numericUpDown4.Value != 0)
-                {
-                    LibroClonado.precio = Convert.ToInt32(numericUpDown4.Value);
-                }
-                Dlibro.Guardar_Libro(LibroClonado);
-                MessageBox.Show("se clono el libro");
-                LimpiarControles();
-                cargardatos();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar algun libro");
+
+                MessageBox.Show(ex.Message);
             }
+            
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            libroSelect = (Libro)dataGridView1.CurrentRow.DataBoundItem;
         }
     }
 }

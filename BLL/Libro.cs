@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace BLL
 {
-    public class Libro:IPrototipo
+    public class Libro:IPrototipo<Libro>
     {
         public int id { get; set; }
         public string titulo { get; set; }
@@ -32,29 +32,37 @@ namespace BLL
             this.Autor = _autor;
             this.stock = _stock;
         }
-
-        
-        public object Clone()
-        {
-            return (Libro)this.MemberwiseClone();
-        }
-
-        public object ClonProfundo(object ObjProto)
-        {
-            Libro clone = (Libro)this.MemberwiseClone();
-            clone.editorial = new Editorial(editorial.nombre,editorial.cuil,editorial.telefono,editorial.direccion);
-            clone.titulo = String.Copy(titulo);
-            return clone;
-        }
-
         public override string ToString()
         {
             return $"Titulo:{this.titulo} - Cantidad de paginas:{this.cantHojas} - Datos Editorial: {this.editorial.nombre},{this.editorial.direccion}";
         }
+
+
+        //METODOS DE CLONE
+        public object Clone() 
+        {
+            return this.MemberwiseClone();
+        }
+
+        Libro IPrototipo<Libro>.ClonProfundo()
+        {
+            Libro clone = (Libro)this.MemberwiseClone();
+            clone.genero = new Genero(this.genero.id, this.genero.descripcion);
+            clone.editorial = new Editorial();
+            return clone;
+        }
     }
-    public class Genero
+
+
+    public class Genero //Clase genero de libro
     {
         public int id { get; set; }
         public string descripcion { get; set; }
+
+        public Genero(int id, string descripcion)
+        {
+            this.id = id;
+            this.descripcion = descripcion;
+        }
     }
 }

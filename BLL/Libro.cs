@@ -48,7 +48,7 @@ namespace BLL
         {
             Libro clone = (Libro)this.MemberwiseClone();
             clone.genero = new Genero(this.genero.id, this.genero.descripcion);
-            clone.editorial = new Editorial();
+            clone.editorial = new Editorial(this.editorial.nombre, this.editorial.cuil, this.editorial.telefono, this.editorial.direccion);
             return clone;
         }
     }

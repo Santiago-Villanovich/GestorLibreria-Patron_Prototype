@@ -80,7 +80,7 @@ namespace UI
             {
                 if (libroSelect != null)
                 {
-                    Libro LibroClonado = (Libro)libroSelect.ClonProfundo();
+                    Libro LibroClonado = (Libro)libroSelect.ClonProfundo(libroSelect);
 
                     if (textBox1.Text != string.Empty)
                     {

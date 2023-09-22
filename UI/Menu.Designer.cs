@@ -52,7 +52,7 @@
             this.NavPanel.Location = new System.Drawing.Point(0, 0);
             this.NavPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NavPanel.Name = "NavPanel";
-            this.NavPanel.Size = new System.Drawing.Size(220, 634);
+            this.NavPanel.Size = new System.Drawing.Size(225, 634);
             this.NavPanel.TabIndex = 0;
             // 
             // button5
@@ -136,10 +136,10 @@
             // ContPanel
             // 
             this.ContPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContPanel.Location = new System.Drawing.Point(220, 0);
+            this.ContPanel.Location = new System.Drawing.Point(225, 0);
             this.ContPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ContPanel.Name = "ContPanel";
-            this.ContPanel.Size = new System.Drawing.Size(970, 634);
+            this.ContPanel.Size = new System.Drawing.Size(965, 634);
             this.ContPanel.TabIndex = 1;
             this.ContPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ContPanel_Paint);
             // 

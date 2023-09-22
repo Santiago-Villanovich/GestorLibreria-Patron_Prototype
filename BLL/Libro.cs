@@ -7,7 +7,7 @@ using System.Xml.Linq;
 
 namespace BLL
 {
-    public class Libro:IPrototipo<Libro>
+    public class Libro:IPrototipo
     {
         public int id { get; set; }
         public string titulo { get; set; }
@@ -44,13 +44,15 @@ namespace BLL
             return this.MemberwiseClone();
         }
 
-        Libro IPrototipo<Libro>.ClonProfundo()
+        public object ClonProfundo(object ObjProto)
         {
             Libro clone = (Libro)this.MemberwiseClone();
             clone.genero = new Genero(this.genero.id, this.genero.descripcion);
             clone.editorial = new Editorial(this.editorial.nombre, this.editorial.cuil, this.editorial.telefono, this.editorial.direccion);
+            clone.Autor = new autor(this.Autor.codigo, this.Autor.nombre, this.Autor.apellido, this.Autor.nacionalidad, this.Autor.fecha_nacimiento);
             return clone;
         }
+
     }
 
 

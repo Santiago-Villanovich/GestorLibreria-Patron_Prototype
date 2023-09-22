@@ -19,6 +19,8 @@ namespace UI
             Dlibro = new DAL_Libro();
             Deditorial = new DAL_Editorial();
             Dautor = new DALautor();
+            gboxEdicion.Enabled = false;
+            gboxRevision.Enabled = false;
         }
         DAL_Libro Dlibro;
         DAL_Editorial Deditorial;

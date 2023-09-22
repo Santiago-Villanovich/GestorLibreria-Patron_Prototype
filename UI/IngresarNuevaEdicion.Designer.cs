@@ -77,13 +77,12 @@
             this.gboxRevision.TabIndex = 18;
             this.gboxRevision.TabStop = false;
             this.gboxRevision.Text = "Nueva edicion de revision";
-            this.gboxRevision.Visible = false;
             // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker2.Location = new System.Drawing.Point(254, 58);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(186, 22);
             this.dateTimePicker2.TabIndex = 34;
@@ -140,7 +139,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(28, 57);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(181, 22);
             this.textBox3.TabIndex = 26;
@@ -167,12 +166,11 @@
             this.gboxEdicion.TabIndex = 28;
             this.gboxEdicion.TabStop = false;
             this.gboxEdicion.Text = "Nueva Edicion";
-            this.gboxEdicion.Visible = false;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(28, 169);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(188, 22);
             this.dateTimePicker1.TabIndex = 33;
@@ -267,7 +265,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(35, 52);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(181, 22);
             this.textBox1.TabIndex = 26;
@@ -276,7 +274,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(467, 105);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(552, 297);

@@ -49,7 +49,7 @@ namespace BLL
             Libro clone = (Libro)this.MemberwiseClone();
             clone.genero = new Genero(this.genero.id, this.genero.descripcion);
             clone.editorial = new Editorial(this.editorial.nombre, this.editorial.cuil, this.editorial.telefono, this.editorial.direccion);
-            clone.Autor = new autor(this.Autor.codigo, this.Autor.nombre, this.Autor.apellido, this.Autor.nacionalidad, this.Autor.fecha_nacimiento);
+            clone.Autor = new autor(this.Autor.codigo, this.Autor.nombre, this.Autor.apellido, this.Autor.nacionalidad, this.Autor.Fecha_Nacimiento);
             return clone;
         }
 
@@ -66,5 +66,6 @@ namespace BLL
             this.id = id;
             this.descripcion = descripcion;
         }
+        public Genero() { }
     }
 }

@@ -105,6 +105,7 @@
             this.btnAgregarStock.TabIndex = 4;
             this.btnAgregarStock.Text = "Gestionar Stock";
             this.btnAgregarStock.UseVisualStyleBackColor = false;
+            this.btnAgregarStock.Visible = false;
             this.btnAgregarStock.Click += new System.EventHandler(this.btnAgregarStock_Click);
             // 
             // button4
